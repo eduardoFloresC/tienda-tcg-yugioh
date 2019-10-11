@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Pantalla del administrador</title>
-	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/estili.css">
-</head>
+<?php
+include("vistas/common/base.inc.php");
+
+?>
 <body>
 
 	<?php

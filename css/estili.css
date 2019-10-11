@@ -1,4 +1,6 @@
-body
-{
-	/*background-color: blue;*/
+img{
+	width: 150;
+}
+body{
+	background-color: "red";
 }
