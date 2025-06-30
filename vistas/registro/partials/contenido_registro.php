@@ -4,7 +4,8 @@
 	
 	<div class="container">
 		<h1>Registro de usuario</h1>
-		<form action="vistas/registro/registrar_usuario.php" method="post" class="form-register">
+		<form action="index.php" method="post" class="form-register">
+			<input name="m" type="hidden" value="registrar_usuario">
 			<div class="container">
 				<div class="row ">
 					<div class="col-2">

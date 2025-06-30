@@ -3,27 +3,21 @@
 	if ( session_status() === PHP_SESSION_NONE  ){
 		session_start();
 	}
-	
-
  ?>
-<?php
-    include 'modelo/DAOs/productosDAO.php';
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>TCG COMPRA VENTA - Login</title>
+	<title>TCG COMPRA VENTA</title>
+	
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../css/estili.css">
+	
 </head>
 
-<header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-      <h1><a href="index.php"><img src="img/reino.png" width="100"></a>TCG TIENDA</h1>
+<header class="header" >
+    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top"  style="background-color: #1A3552" >
+      <h1 style="color: #6487AB"><a href="index.php" ><img src="img/reino.png" width="100" ></a>TCG TIENDA</h1>
 			</div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -41,16 +35,21 @@
         </ul>
         	
 		<div>
+			
 		<?php
 			if (isset($_SESSION["carrito"])) {?>
-				<a htabindex="-1" role="button" aria-disabled="true" href="carrito.php?m=carrito&a=listar" class="btn btn-info btn-sm mr-2"tabindex="-1" role="button" aria-disabled="true">Carrito(<?= sizeof($_SESSION["carrito"]) ?>)	</a><?php
+				<a htabindex="-1" role="button" aria-disabled="true" href="index.php?m=carrito&a=listar" class="btn btn-info btn-sm mr-2"tabindex="-1" role="button" aria-disabled="true">
+				Carrito(<?= sizeof($_SESSION["carrito"])?>)
+					</a><?php
 			}
 		?>
+	</div>
+	<div style="color: white">
 		<?php
-			if ( isset($_SESSION["usuario"]) ){
+			if ( isset($_SESSION["usr_alias"]) ){
 
 
-				echo "Bienvenido " . $_SESSION["nombre_real"];
+				echo "Bienvenid@ " . $_SESSION["usr_alias"];
 
 				echo "<div><a href=\"index.php?m=logout\">Cerrar sesión</a></div>";
 				
@@ -67,6 +66,7 @@
 			
 			
 		<?php }
+		
 		?>
 		</div>
 			
@@ -74,14 +74,14 @@
       </div>
     </nav>
   </header>
-
+<body background="">
 <?php
 	include("$contenido");
 
 ?>
-
+</body>
 <!---->
-<link rel="stylesheet" href="css/estili.css">
+
 
 <div class="card mt-5">
 <div class="card-header ">
@@ -123,3 +123,4 @@
 <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="css/estili.css">

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2019 a las 17:54:23
--- Versión del servidor: 10.3.15-MariaDB
--- Versión de PHP: 7.3.6
+-- Tiempo de generación: 16-10-2019 a las 04:14:18
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.1.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,7 +68,7 @@ CREATE TABLE `productos` (
 INSERT INTO `productos` (`prod_id`, `prod_nombre`, `prod_cantidad`, `prod_descripcion`, `prod_precio`, `usr_id`, `prod_imagen`, `cat_id`) VALUES
 (1, 'Dark Magician', 1, 'Mago oscuro de Structure Deck, rareza common', 50, 2, 'mago.jpg', 1),
 (2, 'Evilswarm Exciton Knight', 1, 'Evilswarm Exciton Knight, Secret de Megatin 2014', 250, 2, 'exciton.jpg', 1),
-(3, 'Blue-Eyes White Dragon', 3, 'Dragón Blanco de Ojos Azules, estado 10/10.', 100, 8, 'blueyes.png', 1),
+(3, 'Blue-Eyes White Dragon', 3, 'Dragon Blanco de Ojos Azules, estado 10/10.', 100, 8, 'blueyes.png', 1),
 (4, 'Orgoth the Relentless', 1, 'Orgoth the Relentless, rareza Secret. Excelente estado.', 180, 2, 'orgoth.jpg', 1),
 (5, 'Monster Reborn', 1, 'Monster Reborn, Lost Art, rareza ultra, estdo 10/10.', 1500, 2, 'reborn.jpg', 2),
 (6, 'Raigeki', 2, 'Raigeki, rareza Secret.', 500, 3, 'raigeki.png', 2),
@@ -82,7 +82,10 @@ INSERT INTO `productos` (`prod_id`, `prod_nombre`, `prod_cantidad`, `prod_descri
 (14, 'Palladium Oracle Mahad', 1, 'Palladium Oracle Mahad, rareza Ultra Rare. Edicion limitada.', 200, 9, 'mahad.jpg', 1),
 (15, 'Stardust Dragon', 1, 'Dragon Polvo de Estrellas, rareza Super. Edicion Limitada.', 150, 11, 'stardust.jpg', 1),
 (16, 'Playmat WCQ regional 2014, Gravekeeper', 1, 'Playmat WCQ de Regional 2014, excelente estado, sin uso. 10 de 10.', 1500, 9, 'playmatG.png', 5),
-(17, 'Gagaga Cowboy', 1, 'Gagaga Cowboy Rareza Super.', 80, 10, 'cowboy.jpg', 1);
+(17, 'Gagaga Cowboy', 1, 'Gagaga Cowboy Rareza Super.', 80, 10, 'cowboy.jpg', 1),
+(18, 'Playmat Phantom Knights', 1, 'Playmat Phantom Knights de World Championshio Qualifier 2016, estado 7/10.', 1000, 13, 'playmatpk.webp', 5),
+(19, 'compul', 2, 'com', 20, 2, 'compul.jpg', 3),
+(20, 'Contrast HERO Chaos', 2, 'Contrast HERO Chaos, rareza Super.', 60, 2, 'chaosh.png', 1);
 
 -- --------------------------------------------------------
 
@@ -147,7 +150,13 @@ INSERT INTO `usuarios` (`usr_id`, `usr_alias`, `usr_apellido`, `usr_nombre`, `pr
 (8, 'leanbreak', 'Ojeda', 'Leandro', 1, 'leandro@gmail.com', '4321'),
 (9, 'rose', 'Rosales', 'Claudia', 3, 'rosali@rose.com', 'rose'),
 (10, 'serx', 'Cabrera', 'Sergio', 19, 'sergio@xer.com.ar', 'serx'),
-(11, 'ryu', 'Hoshi', 'Ryu', 16, 'ryu@zen.com.ar', 'ken');
+(11, 'ryu', 'Hoshi', 'Ryu', 16, 'ryu@zen.com.ar', 'ken'),
+(13, 'Alex', 'Cabrera', 'Alex', 1, 'alex@mimundo.com.ar', 'alex'),
+(14, 'Loki', 'Mega', 'Bernard', 14, 'loki@lok.com', 'loki'),
+(20, 'Pegasus', 'Pegasus', 'edward', 14, 'ilusion@empresa.com', 'jaja'),
+(24, 'pepe', 'Martinez', 'Jose', 1, 'pepe@pepe.com.ar', 'pepe'),
+(26, 'NEOS', 'Anderson', 'Neo', 19, 'matrix@matrix.com', 'matrix'),
+(27, 'tupac', 'Amaru', 'tupac', 5, 'tuy@tuy.org', '9876');
 
 -- --------------------------------------------------------
 
@@ -221,7 +230,7 @@ ALTER TABLE `categorias_productos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `provincias`
@@ -233,7 +242,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas

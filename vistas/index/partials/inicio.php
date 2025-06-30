@@ -1,14 +1,9 @@
 
 	<div class="container">
-		<div class="row">	
-		</div>
+		
 		<div class="row">
-			<div class="">
-				<div class="">
-				
-				</div>
-			</div>
-			<h3>Compra Venta de TCG (Trading Card Games)</h3>
+			
+			<h2 class="mt-2">Compra Venta de TCG (Trading Card Games)</h2>
 			<ul class="nav-item dropdown">
             	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Listado Por Categorias
@@ -36,12 +31,11 @@
 
             </div>
           </ul>
-		<div class="container">
+      </div>
+	<div class="container">
 
 			<div class="row">
-				<div class="col-2">
-
-				</div>
+				
 				<div class="">
 					
 					<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
@@ -67,10 +61,11 @@
 					</div>
 
 				</div>
-				
-				<div class="container mt-5">
+		</div>
+	</div>
+				<div class="container mt-2 text-center">
 					<h2>Ofertas</h2>
-					<div class="row">
+					<div class="row text-center">
 							<?php
 								$conexion = new mysqli("localhost", "root", "", "tcgtienda");
 
@@ -90,9 +85,9 @@
 
 								foreach ($productos as $producto){
 										
-									?><div class="card text-center mr-5 mt-2 card-transparent border-dark" >
-									<div class="card-header"><?=$producto ["prod_nombre"];?></div>
-									<img src=img/<?= $producto["prod_imagen"];?> class="mx-auto" width="200">
+									?><div class="card text-center mr-5 mt-2 border-dark" style="width: 14rem; background-color: rgba(245, 245, 245, 0.4);">
+									<div class="card-header" style="background-color: #5ABDCC"><?=$producto ["prod_nombre"];?></div>
+									<img src=img/<?= $producto["prod_imagen"];?>  class="mx-auto img-fluid" width="200" onmouseover="this.width=500;this.height=500;" onmouseout="this.width=200;this.height=200;" width="300" height="300" >
 									<?php
 									echo "<p> Precio del Producto $ ".$producto ["prod_precio"]."</p></b>";
 									?>
@@ -103,9 +98,9 @@
 								mysqli_close($conexion);
 							?>
 						  							
-								</div>
+					</div>
 			</div>
-		</div>
+		
 
-	</body>
+	
 

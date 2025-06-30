@@ -1,45 +1,70 @@
 <?php
 
-     $accion = "listar";
+$accion = "listar";
 
-     if ( isset( $_REQUEST["a"] ) ){
-           $accion = $_REQUEST["a"];
-     }
+if (isset($_REQUEST["a"])) {
+	$accion = $_REQUEST["a"];
+}
 
 
-     switch ($accion) {
+switch ($accion) {
 
-          case 'listar':
-               $contenido = "vistas/carrito/partials/contenido_carrito.php";
-               include "vistas/common/base.php";
+	case 'listar':
+		$contenido = "vistas/carrito/partials/contenido_carrito.php";
+		include "vistas/common/base.inc.php";
 
-               break;
-          
-          case 'quitar':
-              session_start();
+		break;
 
-              if ( isset($_GET["indice"]) ){
-                    $indice =  $_GET["indice"];
+	case 'quitar':
+		session_start();
 
-                    unset( $_SESSION["carrito"][$indice ] ) ;
+		if (isset($_GET["indice"])) {
+			$indice =  $_GET["indice"];
 
-                    $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
+			unset($_SESSION["carrito"][$indice]);
 
-                    var_dump($_SESSION["carrito"]);
-                    header("Location: index.php?m=carrito");
-               }     
+			$_SESSION["carrito"] = array_values($_SESSION["carrito"]);
 
-               break;               
+			var_dump($_SESSION["carrito"]);
+			header("Location: index.php?m=carrito");
+		}
 
-          case 'agregar':
-              session_start();
+		break;
 
-              if ( isset($_GET["id_producto"]) ){
-                  $_SESSION["carrito"][] = $_GET["id_producto"];
+	case 'agregar':
+		session_start();
 
-                  header("Location: index.php?");
-               }     
-               break;
-     }
+		if (isset($_GET["id_producto"])) {
+			$_SESSION["carrito"][] = $_GET["id_producto"];
 
+			header("Location: index.php?");
+		}
+		break;
+
+	case 'cancelar_compra':
+		session_start();
+
+		if (isset($_SESSION["carrito"])) {
+			unset($_SESSION["carrito"]);
+			$_SESSION["carrito"] = [];
+			header("Location: index.php?m=carrito");
+		}
+		break;
+	case 'verificar_compra':
+		session_start();
+
+		if (empty($_SESSION["carrito"])) {
+			header("Location: index.php?m=carrito&mensaje=" . urlencode("Carrito vacío"));
+			exit;
+		}
+
+		if (!isset($_SESSION["usr_id"])) {
+			header("Location: index.php?m=ingreso&redirect=" . urlencode("index.php?m=carrito&a=verificar_compra"));
+			exit;
+		}
+
+		header("Location: index.php?m=checkout&a=mostrar");
+		exit;
+		break;
+}
 ?>

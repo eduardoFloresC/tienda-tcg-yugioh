@@ -1,28 +1,23 @@
 <?php
 
-function obtenerProductos( $textoBuscado ){
-	
+function obtenerProductos($textoBuscado) {
     $conexion = new mysqli("localhost", "root", "", "tcgtienda");
-
-    $sql = "SELECT * FROM producto";
-
-    $sql .= " WHERE producto LIKE '%" .  $textoBuscado . "%' ";
-    $sql .= " OR prod_descripcion LIKE '%" .  $textoBuscado . "%' ";
-
-
-    return $conexion->query($sql);
-
+    $stmt = $conexion->prepare("SELECT * FROM productos WHERE prod_nombre LIKE ? OR prod_descripcion LIKE ?");
+    $like = "%$textoBuscado%";
+    $stmt->bind_param("ss", $like, $like);
+    $stmt->execute();
+    return $stmt->get_result();
 }
 
-function obtenerInfoArticulo( $idArticulo ){
-
+function obtenerInfoArticulo($idArticulo) {
     $conexion = new mysqli("localhost", "root", "", "tcgtienda");
+    $stmt = $conexion->prepare("SELECT * FROM productos WHERE prod_id = ?");
+    $stmt->bind_param("i", $idArticulo);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    if ($resultado->num_rows === 0) {
+        return null; // no existe el producto
+    }
 
-    $sql = "SELECT * FROM producto WHERE prod_id = " . $idArticulo;
-
-    $resultado = $conexion->query($sql);
-
-    $infoArticulo = $resultado->fetch_assoc();
-
-    return $infoArticulo;
+    return $resultado->fetch_assoc();
 }

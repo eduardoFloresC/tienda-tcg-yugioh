@@ -1,77 +1,38 @@
+<div class="container">
+    <h1>Ingresar a tu cuenta: </h1>
 
-<body>
-	
-	<div class="container"><?php
-		if ( isset($_GET["nombre"] ) && isset($_GET["password"] ) ){
+    <?php if (!empty($mensaje)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($mensaje) ?></div>
+    <?php endif; ?>
 
-			$conexion = new mysqli("localhost", "root", "", "tcgtienda");
+    <form method="GET" action="index.php">
+        <input type="hidden" name="m" value="ingreso">
+        <input name="redirect" type="hidden" value="<?= isset($_GET['redirect']) ? htmlspecialchars($_GET['redirect']) : ''; ?>">
 
-			$sql = "SELECT * FROM usuarios WHERE usr_alias = '" . $_GET["nombre"] . "' AND password = '" . $_GET["password"] . "'";
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <label for="nombre">Nombre de usuario: </label>
+                </div>
+                <div class="col-10">
+                    <input name="nombre" type="text" required>
+                </div>
+            </div>
+        </div>
 
-			$resultado = $conexion->query($sql);
-
-			$usuario = $resultado->fetch_assoc(); //leo y guardo en usuario
-
-			if( $resultado->num_rows == 1 ){
-				
-				$_SESSION["usuario"] = $_GET["nombre"];
-				$_SESSION["nombre_real"] = $usuario["usr_nombre"];
-				$_SESSION["usr_id"] = $usuario["usr_id"];
-				$_SESSION["usr_alias"] = $usuario["usr_alias"];
-
-				header("Location: index.php?m=pantalla_usuario");
-			}
-			else{
-				
-				?><div class="alert alert-danger alert-dismissible fade show" role="alert">
-					  <strong>Usuario o contraseña no válido</strong> Por favor intente nuevamente.
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					    <span aria-hidden="true">&times;</span>
-					  </button>
-					</div>
-				<?php
-			}
-
-		}
-	?>
-	<h1>Ingresar a tu cuenta: </h1>
-	<form action="index.php">
-		<input name="m" type="hidden" value="ingreso">
-
-		<div class="container">
-			<div class="row ">
-				<div class="col-2">
-					<label for="nombre">Nombre de usuario: </label>
-				
-				</div>
-				<div class="col-10">
-					<input name="nombre" type="text">
-				</div>
-			
-			</div>
-		</div>
-		
-		<div class="container">
-			<div class="row">
-				<div class="col-2">
-					<label for="password">Contraseña: </label>
-				
-				</div>
-				<div class="col-10">
-					<input name="password" type="password">
-				</div>
-			
-			</div>
-			<input class="mt-2" type="submit" value="Ingresar">
-			<div>
-				<button type="button" class="btn btn-outline-warning mt-5"><a href="index.php?m=recuperacionPass" style="text-decoration: none;">Perdí mi contraseña</a> </button>
-				
-			</div>
-		</div>
-		
-		
-
-	</form>
-	</div>
-	
-</body>
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <label for="password">Contraseña: </label>
+                </div>
+                <div class="col-10">
+                    <input name="password" type="password" required>
+                </div>
+            </div>
+            <input class="mt-2" type="submit" value="Ingresar">
+            <div>
+                <a href="index.php?m=recuperacionPass" class="btn btn-outline-warning mt-5">Perdí mi contraseña</a>
+            </div>
+        </div>
+    </form>
+</div>
